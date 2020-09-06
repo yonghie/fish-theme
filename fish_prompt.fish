@@ -12,7 +12,7 @@ function fish_prompt
 
 
 
-  echo -n -s $yellow (hostname) $black '@' $white $cwd $normal
+  echo -n -s ' ' $yellow (hostname) $black '@' $white $cwd $normal
 
   echo -n -s ' :: ' $normal
 

@@ -7,11 +7,11 @@ function _git_dirty
 end
 
 function _git_logplus
-	echo (command git log --numstat --pretty="%H" | awk 'NF==3 {plus+=$1} END {printf("+%d\n", plus)}' 2> /dev/null)
+	echo (command git log --numstat --pretty="%H" 2> /dev/null | awk 'NF==3 {plus+=$1} END {printf("+%d\n", plus)}' 2> /dev/null)
 end
 
 function _git_logminus
-	echo (command git log --numstat --pretty="%H" | awk 'NF==3 {minus+=$2} END {printf("-%d\n", minus)}' 2> /dev/null)
+	echo (command git log --numstat --pretty="%H" 2> /dev/null | awk 'NF==3 {minus+=$2} END {printf("-%d\n", minus)}' 2> /dev/null)
 end
 
 function fish_right_prompt
@@ -32,11 +32,11 @@ function fish_right_prompt
 
 		else
 
-			set git_info $blue $git_branch # ' ' $green (_git_logplus) ' ' $red (_git_logminus)
+			set git_info $blue $git_branch 
 		
 		end
 
-		echo -n -s ' ' $git_info $normal
+		echo -n -s ' ' $git_info $normal ' ' $green (_git_logplus) ' ' $red (_git_logminus) ' '
 	
 	end
 end
